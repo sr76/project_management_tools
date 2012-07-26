@@ -43,7 +43,10 @@ def runsarr():
             name=root+"/input.xml"
             if os.path.isfile(name):
                 tree = etree.parse(name)
-                description=tree.xpath('/input/keywords')[0].text
+                if tree.xpath('/input/keywords'):
+                    description=tree.xpath('/input/keywords')[0].text
+                else:
+                    description=" No description"
             else:
                 description="NO INPUT.XML FILE"
 
