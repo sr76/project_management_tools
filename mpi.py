@@ -10,6 +10,9 @@ if narg != 3:
     sys.exit()
 
 scwd = str(os.getcwd()).split("/")
+# the current working directory has to be a valid run directory, whose name is
+# a timestamp in miliseconds (13 digits number) and, to be more sure, this
+# folder has to be inside the "runs" directory of the project.
 if len(scwd[-1])!=13 and scwd[-2]!="runs":
     print "You must be inside the run directory where the input.xml is located to run this script. Exiting without executing."
     sys.exit()
@@ -28,12 +31,17 @@ pbs_str="""#!/bin/bash
 #PBS -N NAME
 scdir=/home1/srigamonti/excitingruns/$PBS_JOBID
 mkdir -p $scdir
-cp $PBS_O_WORKDIR/* $scdir
+scp srigamonti@sol9.physik.hu-berlin.de:$PBS_O_WORKDIR/* $scdir
 COPYLINE
 cp -r /home1/srigamonti/exciting/species $scdir
 cd $scdir
 RUNLINE
-cp -r * $PBS_O_WORKDIR
+scp -r * srigamonti@sol9.physik.hu-berlin.de:$PBS_O_WORKDIR
+ssh srigamonti@sol9.physik.hu-berlin.de rm -f $PBS_O_WORKDIR/excitingser
+ssh srigamonti@sol9.physik.hu-berlin.de rm -f $PBS_O_WORKDIR/excitingmpi
+ssh srigamonti@sol9.physik.hu-berlin.de rm -rf $PBS_O_WORKDIR/species
+cd ..
+rm -r $scdir
 """
 pbs_str=pbs_str.replace("NNODE",node_name)
 pbs_str=pbs_str.replace("NP",np)
@@ -42,7 +50,7 @@ if np>1:
     pbs_str=pbs_str.replace("RUNLINE","mpirun -np %s excitingmpi > RUN.OUT"%(np))
     pbs_str=pbs_str.replace("COPYLINE","cp /home1/srigamonti/exciting/bin/excitingmpi $scdir")
 if np==1:
-    pbs_str=pbs_str.replace("RUNLINE","excitingser > RUN.OUT"%(np))
+    pbs_str=pbs_str.replace("RUNLINE","excitingser > RUN.OUT")
     pbs_str=pbs_str.replace("COPYLINE","cp /home1/srigamonti/exciting/bin/excitingser $scdir")
 
 print pbs_str
