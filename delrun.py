@@ -10,8 +10,11 @@ if scwd[len(scwd)-1]!="runs":
 
 narg=len(sys.argv)
 
-if narg != 2:
-    print "Number of arguments different from 1"
+if narg < 2:
+    print "Number of arguments less than 1"
+    print "USAGE:"
+    print "$>delrun.py index1 index2 ..."
+    print "where indexi is the index of the run, which you can find by running listruns.py"
     sys.exit()
 
 runs=runsarr.runsarr()
@@ -23,7 +26,7 @@ for run in runs:
     s_description=run[3]
     s_path=run[4]
 
-    if index==int(sys.argv[1]):
+    if str(index) in sys.argv[1:]:
         print "********** DELETED RUN *****************"
         print "PROJECT:",s_project
         print "TSTAMP:",s_tstamp
@@ -33,6 +36,3 @@ for run in runs:
         print "***************************************\n"
 
         os.system("rm -r %s"%(s_path))
-
-        sys.exit()
-
