@@ -53,7 +53,7 @@ if np==1:
     pbs_str=pbs_str.replace("RUNLINE","excitingser > RUN.OUT")
     pbs_str=pbs_str.replace("COPYLINE","cp /home1/srigamonti/exciting/bin/excitingser $scdir")
 
-print pbs_str
+# print pbs_str
 
 f=open("RUN.sh","w")
 f.write(pbs_str)
