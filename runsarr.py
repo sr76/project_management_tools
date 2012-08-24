@@ -62,7 +62,7 @@ def runsarr():
             s_tstamp=str(tstamp)
             s_index=runst[str(tstamp)]
             s_description=description
-            s_path=root.strip()
+            s_path=root
             s_status=status.strip()
             s_importance=importance.strip()
 

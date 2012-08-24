@@ -22,26 +22,32 @@ for run in runs:
     s_status=run[5]
     s_importance=run[6]
 
+    printrun = 0
+
     if narg == 0:
+        printrun = 1
+
+ 
+    if "-s" in args:
+        if s_status in args:
+            printrun = 1
+            
+    if "-p" in args:
+        if s_project in args:
+            printrun = 1
+
+    if "-i" in args:
+        if s_importance in args:
+            printrun = 1
+            
+
+    if printrun:
         print "***************************"
         print "PROJECT:",s_project
         print "TSTAMP:",s_tstamp
         print "INDEX:",s_index
         print "DESCRIPTION:", s_description
         print "PATH:", s_path
+        print "STATUS:", s_status
+        print "IMPORTANCE:", s_importance
         print "***************************\n"
-
-    print args
-    print s_status.strip()
-    if "active" in args:
-        print "siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-
-    if "-s" in args:
-        if s_status.strip() in args:
-            print "***************************"
-            print "PROJECT:",s_project
-            print "TSTAMP:",s_tstamp
-            print "INDEX:",s_index
-            print "DESCRIPTION:", s_description
-            print "PATH:", s_path
-            print "***************************\n"
