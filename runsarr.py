@@ -45,6 +45,8 @@ def runsarr():
                 tree = etree.parse(name)
                 if tree.xpath('/input/keywords'):
                     description=tree.xpath('/input/keywords')[0].text
+                    if tree.xpath('/input/keywords/description'):
+                        description=description + tree.xpath('/input/keywords/description')[0].text
                 else:
                     description=" No description"
             else:
