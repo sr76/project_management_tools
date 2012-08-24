@@ -8,7 +8,10 @@ runs = runsarr.runsarr()
 
 runs.sort(lambda x, y: cmp(x[2],y[2]))
 
-narg=len(sys.argv)
+args = sys.argv[1:]
+
+narg=len(args)
+
 
 for run in runs:
     s_project=run[0]
@@ -19,7 +22,7 @@ for run in runs:
     s_status=run[5]
     s_importance=run[6]
 
-    if narg == 1:
+    if narg == 0:
         print "***************************"
         print "PROJECT:",s_project
         print "TSTAMP:",s_tstamp
@@ -28,4 +31,17 @@ for run in runs:
         print "PATH:", s_path
         print "***************************\n"
 
+    print args
+    print s_status.strip()
+    if "active" in args:
+        print "siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
 
+    if "-s" in args:
+        if s_status.strip() in args:
+            print "***************************"
+            print "PROJECT:",s_project
+            print "TSTAMP:",s_tstamp
+            print "INDEX:",s_index
+            print "DESCRIPTION:", s_description
+            print "PATH:", s_path
+            print "***************************\n"

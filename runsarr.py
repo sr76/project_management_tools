@@ -1,6 +1,5 @@
 import os
 from lxml import etree
-
 projectsdir="/home1/srigamonti/projects"
 
 
@@ -63,9 +62,9 @@ def runsarr():
             s_tstamp=str(tstamp)
             s_index=runst[str(tstamp)]
             s_description=description
-            s_path=root
-            s_status=status
-            s_importance=importance
+            s_path=root.strip()
+            s_status=status.strip()
+            s_importance=importance.strip()
 
             runsarr.append([s_project,s_tstamp,s_index,s_description,s_path,s_status,s_importance])
 
