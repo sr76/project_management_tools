@@ -14,6 +14,8 @@ for run in runs:
     s_index=run[2]
     s_description=run[3]
     s_path=run[4]
+    s_status=run[5]
+    s_importance=run[6]
 
     print "***************************"
     print "PROJECT:",s_project

@@ -47,8 +47,12 @@ def runsarr():
                     description=tree.xpath('/input/keywords')[0].text
                     if tree.xpath('/input/keywords/description'):
                         description=description + tree.xpath('/input/keywords/description')[0].text
+                    if tree.xpath('/input/keywords/status'):
+                        status=tree.xpath('/input/keywords/status')[0].text
+                    if tree.xpath('/input/keywords/importance'):
+                        importance=tree.xpath('/input/keywords/importance')[0].text
                 else:
-                    description=" No description"
+                    description="No metadata"
             else:
                 description="NO INPUT.XML FILE"
 
@@ -59,8 +63,10 @@ def runsarr():
             s_index=runst[str(tstamp)]
             s_description=description
             s_path=root
+            s_status=status
+            s_importance=importance
 
-            runsarr.append([s_project,s_tstamp,s_index,s_description,s_path])
+            runsarr.append([s_project,s_tstamp,s_index,s_description,s_path,s_status,s_importance])
 
     return runsarr
 

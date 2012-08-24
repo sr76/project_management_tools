@@ -25,6 +25,8 @@ for run in runs:
     index=int(run[2])
     s_description=run[3]
     s_path=run[4]
+    s_status=run[5]
+    s_importance=run[6]
 
     if str(index) in sys.argv[1:]:
         print "********** DELETED RUN *****************"
