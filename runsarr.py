@@ -38,7 +38,8 @@ def runsarr():
     #    if sroot[srootlen-1]=="projects":
     #        projects=dirs
 
-
+        status = ""
+        importance = ""
         if sroot[srootlen-2]=="runs":
             name=root+"/input.xml"
             if os.path.isfile(name):
