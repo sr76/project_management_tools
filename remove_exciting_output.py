@@ -2,6 +2,8 @@
 import os
 
 os.system("rm -f *.OUT*")
+os.system("rm -f STM*")
+os.system("rm -f stm*")
 os.system("rm -f PLOT.*")
 os.system("rm -f .INFO*")
 os.system("rm -f info*")
