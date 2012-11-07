@@ -16,5 +16,4 @@ os.system("cp * tmp")
 
 os.system("rm -f *.e*")
 os.system("rm -f *.o*")
-os.system("rm -f .*")
 

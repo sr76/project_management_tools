@@ -40,7 +40,11 @@ for run in runs:
         if s_importance in args:
             printrun = 1
             
-
+    if "-p" and "-i" in args:
+        printrun=0
+        if s_project in args and s_importance in args:
+            printrun = 1
+    
     if printrun:
         print "***************************"
         print "PROJECT:",s_project
