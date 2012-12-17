@@ -45,12 +45,15 @@ def runsarr():
                 tree = etree.parse(name)
                 if tree.xpath('/input/keywords'):
                     description=tree.xpath('/input/keywords')[0].text
+                    notes=""
                     if tree.xpath('/input/keywords/description'):
                         description=description + tree.xpath('/input/keywords/description')[0].text
                     if tree.xpath('/input/keywords/status'):
                         status=tree.xpath('/input/keywords/status')[0].text
                     if tree.xpath('/input/keywords/importance'):
                         importance=tree.xpath('/input/keywords/importance')[0].text
+                    if tree.xpath('/input/keywords/notes'):
+                        notes=notes + tree.xpath('/input/keywords/notes')[0].text
                 else:
                     description="No metadata"
             else:
@@ -65,8 +68,9 @@ def runsarr():
             s_path=root
             s_status=status.strip()
             s_importance=importance.strip()
+            s_notes=notes
 
-            runsarr.append([s_project,s_tstamp,s_index,s_description,s_path,s_status,s_importance])
+            runsarr.append([s_project,s_tstamp,s_index,s_description,s_path,s_status,s_importance,s_notes])
 
     return runsarr
 

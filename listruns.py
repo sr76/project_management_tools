@@ -21,13 +21,17 @@ for run in runs:
     s_path=run[4]
     s_status=run[5]
     s_importance=run[6]
+    s_notes=run[7]
 
     printrun = 0
 
     if narg == 0:
         printrun = 1
 
- 
+    if "-n" in args:
+	if narg ==1:
+	    printrun = 1	
+
     if "-s" in args:
         if s_status in args:
             printrun = 1
@@ -54,4 +58,6 @@ for run in runs:
         print "PATH:", s_path
         print "STATUS:", s_status
         print "IMPORTANCE:", s_importance
+        if "-n" in args:
+            print "NOTES:", s_notes
         print "***************************\n"
