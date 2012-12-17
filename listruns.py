@@ -39,8 +39,8 @@ for run in runs:
     if "-i" in args:
         if s_importance in args:
             printrun = 1
-            
-    if "-p" and "-i" in args:
+    
+    if ("-p" in args) and ("-i" in args):
         printrun=0
         if s_project in args and s_importance in args:
             printrun = 1
