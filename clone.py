@@ -42,9 +42,9 @@ for run in runs:
             #os.system("cp %s/input.xml %s"%(s_path,srundir))
             name=s_path+"/input.xml"
             root = etree.parse(name).getroot()
-            for child in root:
-                if child.tag=="keywords":
-                    child.text=s_description+"\n*** Run cloned from %s ***\n"%(s_path)
+#            for child in root:
+#                if child.tag=="keywords":
+#                    child.text=s_description+"\n*** Run cloned from %s ***\n"%(s_path)
             s_input=etree.tostring(root, pretty_print="true")
             f=open(srundir+"/input.xml","w")
             f.write(s_input)
