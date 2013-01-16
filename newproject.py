@@ -31,6 +31,7 @@ os.system("mkdir %s"%(projname))
 os.system("mkdir %s/runs"%(projname))
 os.system("mkdir %s/scripts"%(projname))
 os.system("mkdir %s/results"%(projname))
+os.system("mkdir %s/reports"%(projname))
 
 print "Project created successfully."
 
