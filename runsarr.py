@@ -59,18 +59,21 @@ def runsarr():
             else:
                 description="NO INPUT.XML FILE"
 
-            tstamp=int(sroot[srootlen-1])
+            try:
+                tstamp=int(sroot[srootlen-1])
+                s_project=sroot[srootlen-3]
+                s_tstamp=str(tstamp)
+                s_index=runst[str(tstamp)]
+                s_description=description
+                s_path=root
+                s_status=status.strip()
+                s_importance=importance.strip()
+                s_notes=notes
 
-            s_project=sroot[srootlen-3]
-            s_tstamp=str(tstamp)
-            s_index=runst[str(tstamp)]
-            s_description=description
-            s_path=root
-            s_status=status.strip()
-            s_importance=importance.strip()
-            s_notes=notes
+                runsarr.append([s_project,s_tstamp,s_index,s_description,s_path,s_status,s_importance,s_notes])
+            except:
+                print "(runsarr.py): uncommon format for run directory name: ",sroot[srootlen-1]
 
-            runsarr.append([s_project,s_tstamp,s_index,s_description,s_path,s_status,s_importance,s_notes])
 
     return runsarr
 
